@@ -18,6 +18,11 @@ Route::get('/', function () {
 Route::get('/tests/test', 'TestController@index');
 
 Route::get('/tests/test2', 'Test2Controller@index');
+
+Route::group(['prefix' => 'contact' ,'middleware' => 'auth'],function(){
+    Route::get('index', 'ContactFormController@index')->name('home');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
